@@ -1,0 +1,24 @@
+name: Terraform Backend Bootstrap
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Init S3 + DynamoDB backend
+        run: |
+          cd infra
+          terraform init -backend-config="bucket=forgemind-terraform-state" \
+                          -backend-config="key=global/terraform.tfstate" \
+                          -backend-config="region=us-west-2" \
+                          -backend-config="dynamodb_table=forgemind-terraform-locks" \
+                          -backend-config="encrypt=true"

@@ -1,0 +1,17 @@
+{
+  "title": "Forgemind Agent Memory",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Memory Usage",
+      "targets": [
+        {
+          "expr": "container_memory_usage_bytes{namespace='forgemind'}",
+          "legendFormat": "{{pod}}",
+          "refId": "A"
+        }
+      ],
+      "datasource": "Prometheus"
+    }
+  ]
+}

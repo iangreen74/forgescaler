@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: { include "planner-agent.fullname" . }
+spec:
+  replicas: { .Values.replicaCount }
+  selector:
+    matchLabels:
+      app: { include "planner-agent.name" . }
+  template:
+    metadata:
+      labels:
+        app: { include "planner-agent.name" . }
+    spec:
+      containers:
+        - name: { .Chart.Name }
+          image: "{ .Values.image.repository }:{ .Values.image.tag }"
+          imagePullPolicy: { .Values.image.pullPolicy }
+          ports:
+
+          volumeMounts:
+            - name: memory-volume
+              mountPath: /mnt/memory
+            - containerPort: 80
+
+      volumes:
+        - name: memory-volume
+          persistentVolumeClaim:
+            claimName: forgemind-efs-pvc

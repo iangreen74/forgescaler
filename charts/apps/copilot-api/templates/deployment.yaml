@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: { include "copilot-api.fullname" . }
+spec:
+  replicas: { .Values.replicaCount }
+  selector:
+    matchLabels:
+      app: { include "copilot-api.name" . }
+  template:
+    metadata:
+      labels:
+        app: { include "copilot-api.name" . }
+    spec:
+      containers:
+        - name: { .Chart.Name }
+          image: "{ .Values.image.repository }:{ .Values.image.tag }"
+          imagePullPolicy: { .Values.image.pullPolicy }
+          ports:
+            - containerPort: 80

@@ -1,0 +1,5 @@
+apiVersion: v2
+name: planner-agent
+description: A Helm chart for deploying the planner-agent component of Forgemind
+version: 0.1.0
+appVersion: "1.0"

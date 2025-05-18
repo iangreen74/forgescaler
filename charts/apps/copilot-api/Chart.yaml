@@ -1,0 +1,5 @@
+apiVersion: v2
+name: copilot-api
+description: A Helm chart for deploying the copilot-api component of Forgemind
+version: 0.1.0
+appVersion: "1.0"

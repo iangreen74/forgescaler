@@ -1,0 +1,5 @@
+apiVersion: v2
+name: copilot-console
+description: A Helm chart for deploying the copilot-console component of Forgemind
+version: 0.1.0
+appVersion: "1.0"

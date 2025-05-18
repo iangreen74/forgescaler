@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: forgemind-agent-alerts
+  namespace: monitoring
+spec:
+  groups:
+    - name: agent.rules
+      rules:
+        - alert: HighMemoryUsage
+          expr: container_memory_usage_bytes{namespace="forgemind"} > 200000000
+          for: 2m
+          labels:
+            severity: warning
+          annotations:
+            summary: "High memory usage detected on {{ $labels.pod }}"
+            description: "Memory usage exceeds 200MB for more than 2 minutes."

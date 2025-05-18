@@ -1,0 +1,29 @@
+name: Helm Chart Deploy
+
+on:
+  push:
+    paths:
+      - 'charts/**'
+  workflow_dispatch:
+
+jobs:
+  helm:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Helm
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+
+      - name: Deploy all charts (example)
+        run: |
+          helm upgrade --install bootstrap-agent ./charts/agents/bootstrap-agent --namespace forgemind --create-namespace
+          helm upgrade --install reflector-agent ./charts/agents/reflector-agent --namespace forgemind
+          helm upgrade --install planner-agent ./charts/agents/planner-agent --namespace forgemind
+          helm upgrade --install executor-agent ./charts/agents/executor-agent --namespace forgemind
+          helm upgrade --install intent-agent ./charts/agents/intent-agent --namespace forgemind
+          helm upgrade --install copilot-api ./charts/apps/copilot-api --namespace forgemind
+          helm upgrade --install copilot-console ./charts/apps/copilot-console --namespace forgemind
