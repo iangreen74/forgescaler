@@ -1,19 +1,21 @@
 variable "zone_id" {
-  description = "Route53 Hosted Zone ID"
-  type        = string
-}
-
-variable "domain_name" {
-  description = "The domain name to use for Forgemind"
-  type        = string
-}
-
-variable "alias_name" {
-  description = "The ALB DNS name or CloudFront distribution name"
+  description = "Route53 public hosted zone ID"
   type        = string
 }
 
 variable "alias_zone_id" {
-  description = "The ALB or CloudFront zone ID"
+  description = "CloudFront or ALB alias zone ID"
   type        = string
+  default     = "Z2FDTNDATAQYW2" # CloudFront global zone ID
+}
+
+variable "cloudfront_domain_name" {
+  description = "Domain name of CloudFront distribution"
+  type        = string
+}
+
+variable "domain_name" {
+  description = "The root domain name"
+  type        = string
+  default     = "forgescaler.com"
 }
