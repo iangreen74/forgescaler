@@ -15,7 +15,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v2
         with:
           role-to-assume: arn:aws:iam::418295677815:role/GitHubOIDC
-          aws-region: us-west-2
+          aws-region: us-east-1
 
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -26,8 +26,8 @@ jobs:
       - name: Init S3 + DynamoDB backend
         run: |
           cd infra
-          terraform init -backend-config="bucket=forgemind-terraform-state" \
+          terraform init -backend-config="bucket=forgescaler-terraform-state" \
                           -backend-config="key=global/terraform.tfstate" \
-                          -backend-config="region=us-west-2" \
+                          -backend-config="region=us-east-1" \
                           -backend-config="dynamodb_table=forgemind-terraform-locks" \
                           -backend-config="encrypt=true"
