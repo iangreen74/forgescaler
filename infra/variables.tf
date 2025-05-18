@@ -45,3 +45,8 @@ variable "alias_zone_id" {
 variable "cluster_name" {
   default = "forgemind-cluster"
 }
+
+variable "cloudfront_domain_name" {
+  description = "Domain name of the CloudFront distribution"
+  type        = string
+}

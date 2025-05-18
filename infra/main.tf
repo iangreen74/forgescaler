@@ -44,11 +44,11 @@ module "acm" {
 }
 
 module "dns" {
-  source        = "./dns"
-  zone_id       = var.zone_id
-  domain_name   = var.domain_name
-  alias_name    = module.eks.cluster_endpoint
-  alias_zone_id = var.alias_zone_id
+  source                 = "./dns"
+  zone_id                = var.zone_id
+  alias_zone_id          = var.alias_zone_id
+  cloudfront_domain_name = var.cloudfront_domain_name
+  domain_name            = var.domain_name
 }
 
 module "eks" {
