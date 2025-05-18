@@ -29,5 +29,5 @@ jobs:
           terraform init -backend-config="bucket=forgescaler-terraform-state" \
                           -backend-config="key=global/terraform.tfstate" \
                           -backend-config="region=us-east-1" \
-                          -backend-config="dynamodb_table=forgemind-terraform-locks" \
+                          -backend-config="dynamodb_table=forgescaler-terraform-locks"
                           -backend-config="encrypt=true"
