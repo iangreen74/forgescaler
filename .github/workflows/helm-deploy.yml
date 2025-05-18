@@ -9,17 +9,16 @@ on:
 jobs:
   helm:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
 
-permissions:
-  id-token: write
-  contents: read
-
-steps:
-  - name: Configure AWS Credentials (OIDC)
-    uses: aws-actions/configure-aws-credentials@v2
-    with:
-      role-to-assume: arn:aws:iam::418295677815:role/GitHubOIDC
-      aws-region: us-west-2
+    steps:
+      - name: Configure AWS Credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::418295677815:role/GitHubOIDC
+          aws-region: us-west-2
 
       - name: Checkout code
         uses: actions/checkout@v4
