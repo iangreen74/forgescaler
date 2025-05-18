@@ -29,9 +29,9 @@ jobs:
       - name: Terraform Init
         run: terraform -chdir=infra init
 
-        - name: Terraform Plan
+      - name: Terraform Plan
         run: terraform plan -var-file="terraform.tfvars" -out=tfplan
-        working-directory: infra/      
+        working-directory: infra/
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
