@@ -1,11 +1,5 @@
 output "cluster_name" {
-  description = "The name of the EKS cluster"
-  value       = module.eks.cluster_name
-}
-
-output "kubeconfig" {
-  description = "Kubeconfig output"
-  value       = module.eks.kubeconfig
+  value = module.eks.cluster_name
 }
 
 output "cluster_endpoint" {
