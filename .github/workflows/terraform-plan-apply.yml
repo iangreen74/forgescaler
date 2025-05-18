@@ -36,3 +36,45 @@ jobs:
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
         run: terraform -chdir=infra apply -auto-approve
+
+      - name: Generate kubeconfig from Terraform outputs
+        id: generate_kubeconfig
+        run: |
+          echo "🔐 Generating kubeconfig..."
+
+          CLUSTER_NAME=$(terraform output -raw cluster_name)
+          CLUSTER_ENDPOINT=$(terraform output -raw cluster_endpoint)
+          CLUSTER_CA=$(terraform output -raw cluster_ca)
+
+          mkdir -p kubeconfig
+          cat > kubeconfig/forgescaler.yaml <<EOF
+          apiVersion: v1
+          clusters:
+          - cluster:
+              server: ${CLUSTER_ENDPOINT}
+              certificate-authority-data: ${CLUSTER_CA}
+            name: ${CLUSTER_NAME}
+          contexts:
+          - context:
+              cluster: ${CLUSTER_NAME}
+              user: aws
+            name: ${CLUSTER_NAME}
+          current-context: ${CLUSTER_NAME}
+          kind: Config
+          preferences: {}
+          users:
+          - name: aws
+            user:
+              exec:
+                apiVersion: client.authentication.k8s.io/v1beta1
+                command: aws
+                args:
+                  - "eks"
+                  - "get-token"
+                  - "--region"
+                  - "${AWS_REGION}"
+                  - "--cluster-name"
+                  - "${CLUSTER_NAME}"
+          EOF
+
+                  echo "✅ Kubeconfig written to kubeconfig/forgescaler.yaml"
