@@ -1,0 +1,2 @@
+{"timestamp": "2025-05-18T00:00:00Z", "event": "helm_deploy_complete", "agents_deployed": ["bootstrap-agent", "reflector-agent", "planner-agent", "executor-agent", "intent-agent"], "apps_deployed": ["copilot-api", "copilot-console"], "kubeconfig_source": "terraform_output_artifact", "namespace": "forgescaler", "notes": "Helm now deploys all core components using auto-generated kubeconfig. Terraform plan still contains invalid output reference to module.eks.kubeconfig."}
+
