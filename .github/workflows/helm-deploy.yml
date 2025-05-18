@@ -27,12 +27,21 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 
-      - name: Deploy all charts (example)
+      - name: Download kubeconfig artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: forgescaler-kubeconfig
+          path: kubeconfig
+
+      - name: Deploy all charts using generated kubeconfig
         run: |
-          helm upgrade --install bootstrap-agent ./charts/agents/bootstrap-agent --namespace forgemind --create-namespace
-          helm upgrade --install reflector-agent ./charts/agents/reflector-agent --namespace forgemind
-          helm upgrade --install planner-agent ./charts/agents/planner-agent --namespace forgemind
-          helm upgrade --install executor-agent ./charts/agents/executor-agent --namespace forgemind
-          helm upgrade --install intent-agent ./charts/agents/intent-agent --namespace forgemind
-          helm upgrade --install copilot-api ./charts/apps/copilot-api --namespace forgemind
-          helm upgrade --install copilot-console ./charts/apps/copilot-console --namespace forgemind
+          export KUBECONFIG=$PWD/kubeconfig/forgescaler.yaml
+
+          helm upgrade --install bootstrap-agent ./charts/agents/bootstrap-agent --namespace forgescaler --create-namespace
+          helm upgrade --install reflector-agent ./charts/agents/reflector-agent --namespace forgescaler
+          helm upgrade --install planner-agent ./charts/agents/planner-agent --namespace forgescaler
+          helm upgrade --install executor-agent ./charts/agents/executor-agent --namespace forgescaler
+          helm upgrade --install intent-agent ./charts/agents/intent-agent --namespace forgescaler
+
+          helm upgrade --install copilot-api ./charts/apps/copilot-api --namespace forgescaler
+          helm upgrade --install copilot-console ./charts/apps/copilot-console --namespace forgescaler
