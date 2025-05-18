@@ -11,7 +11,7 @@ terraform {
   backend "s3" {
     bucket = "forgescaler-terraform-state"
     key    = "global/terraform.tfstate"
-    region = "us-west-2"
+    region = "us-east-1"
   }
 }
 
