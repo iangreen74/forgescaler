@@ -1,34 +1,34 @@
-output "vpc_id" {
-  description = "The ID of the VPC"
-  value       = module.vpc.vpc_id
+variable "vpc_cidr_block" {
+  description = "CIDR block for the default/original VPC"
+  type        = string
 }
 
-output "public_subnets" {
-  description = "Public subnet IDs"
-  value       = module.vpc.public_subnets
+variable "public_subnet_cidrs" {
+  description = "Public subnet CIDRs for the original VPC"
+  type        = list(string)
 }
 
-output "private_subnets" {
-  description = "Private subnet IDs"
-  value       = module.vpc.private_subnets
+variable "private_subnet_cidrs" {
+  description = "Private subnet CIDRs for the original VPC"
+  type        = list(string)
 }
 
-output "vpc_id" {
-  description = "ID of the created VPC"
-  value       = aws_vpc.main.id
+variable "vpc_cidr_block_v2" {
+  description = "CIDR block for the second (new) VPC"
+  type        = string
 }
 
-output "public_subnet_ids" {
-  description = "List of public subnet IDs"
-  value       = aws_subnet.public[*].id
+variable "public_subnet_cidrs_v2" {
+  description = "List of public subnet CIDRs for new VPC"
+  type        = list(string)
 }
 
-output "private_subnet_ids" {
-  description = "List of private subnet IDs"
-  value       = aws_subnet.private[*].id
+variable "private_subnet_cidrs_v2" {
+  description = "List of private subnet CIDRs for new VPC"
+  type        = list(string)
 }
 
-output "vpc_cidr_block" {
-  description = "CIDR block for the created VPC"
-  value       = aws_vpc.main.cidr_block
+variable "availability_zones" {
+  description = "List of availability zones to deploy resources in"
+  type        = list(string)
 }
