@@ -50,3 +50,18 @@ variable "cloudfront_domain_name" {
   description = "Domain name of the CloudFront distribution"
   type        = string
 }
+
+variable "vpc_cidr_block_v2" {
+  description = "CIDR block for the new VPC"
+  type        = string
+}
+
+variable "public_subnet_cidrs_v2" {
+  description = "Public subnets for new VPC"
+  type        = list(string)
+}
+
+variable "private_subnet_cidrs_v2" {
+  description = "Private subnets for new VPC"
+  type        = list(string)
+}

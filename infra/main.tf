@@ -57,3 +57,13 @@ module "eks" {
   subnet_ids   = module.network.private_subnets
   vpc_id       = module.network.vpc_id
 }
+
+module "network_v2" {
+  source = "./network"
+
+  vpc_cidr_block       = var.vpc_cidr_block_v2
+  availability_zones   = var.availability_zones
+  public_subnet_cidrs  = var.public_subnet_cidrs_v2
+  private_subnet_cidrs = var.private_subnet_cidrs_v2
+}
+

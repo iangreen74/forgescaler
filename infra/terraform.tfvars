@@ -3,8 +3,16 @@ alias_zone_id          = "Z2FDTNDATAQYW2"
 cloudfront_domain_name = "d3p3jpf4x470r.cloudfront.net" # Replace with your actual one if different
 domain_name            = "forgescaler.com"
 availability_zones     = ["us-east-1a", "us-east-1b"] # ✅
-private_subnet_cidrs = [
-  "10.0.1.0/24",
-  "10.0.2.0/24",
-  "10.0.4.0/24", # Changed from 10.0.3.0/24 to avoid collision
+
+vpc_cidr_block_v2 = "10.123.0.0/16"
+
+public_subnet_cidrs_v2 = [
+  "10.123.1.0/24",
+  "10.123.2.0/24"
+]
+
+private_subnet_cidrs_v2 = [
+  "10.123.101.0/24",
+  "10.123.102.0/24",
+  "10.123.103.0/24"
 ]
