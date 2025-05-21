@@ -19,14 +19,14 @@ provider "aws" {
   region = var.region
 }
 
-module "network" {
-  source             = "./network"
-  name               = "forgemind-vpc"
-  cidr_block         = var.cidr_block
-  availability_zones = var.availability_zones
-  private_subnets    = var.private_subnets
-  public_subnets     = var.public_subnets
-}
+#module "network" {
+#source             = "./network"
+#name               = "forgemind-vpc"
+#cidr_block         = var.cidr_block
+#availability_zones = var.availability_zones
+#private_subnets    = var.private_subnets
+#public_subnets     = var.public_subnets
+#}
 
 module "iam" {
   source    = "./iam"
