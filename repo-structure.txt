@@ -1,0 +1,129 @@
+.
+├── .aiops
+│   ├── README.md
+│   ├── crds
+│   ├── embeddings
+│   ├── memory
+│   │   └── logs
+│   ├── transformers
+│   └── triage-handlers
+├── .github
+│   ├── README.md
+│   └── workflows
+│       ├── helm-deploy.yml
+│       ├── terraform-bootstrap.yml
+│       └── terraform-plan-apply.yml
+├── .mlops
+│   ├── README.md
+│   ├── data
+│   ├── models
+│   ├── monitoring
+│   ├── pipelines
+│   └── retrain
+├── agents
+│   ├── README.md
+│   ├── base-agent
+│   ├── bootstrap-agent
+│   │   ├── README.md
+│   │   └── main.py
+│   ├── embedding-indexer
+│   ├── executor-agent
+│   │   ├── README.md
+│   │   └── main.py
+│   ├── intent-agent
+│   │   ├── README.md
+│   │   └── main.py
+│   ├── memory-reflector-agent
+│   │   ├── README.md
+│   │   └── main.py
+│   ├── planner-agent
+│   │   ├── README.md
+│   │   └── main.py
+│   └── reflector-agent
+│       ├── README.md
+│       └── main.py
+├── apps
+│   ├── README.md
+│   ├── copilot-api
+│   ├── copilot-console
+│   └── status-dashboard
+├── charts
+│   ├── README.md
+│   ├── agents
+│   │   ├── bootstrap-agent
+│   │   ├── executor-agent
+│   │   ├── intent-agent
+│   │   ├── planner-agent
+│   │   └── reflector-agent
+│   ├── apps
+│   │   ├── copilot-api
+│   │   └── copilot-console
+│   ├── base-infra
+│   │   ├── Chart.yaml
+│   │   ├── templates
+│   │   └── values.yaml
+│   └── memory
+│       ├── Chart.yaml
+│       ├── templates
+│       └── values.yaml
+├── docs
+│   └── README.md
+├── infra
+│   ├── README.md
+│   ├── acm
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── dns
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── eks
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── iam
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── main.tf
+│   ├── network
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── outputs.tf
+│   ├── s3
+│   │   ├── backend-resources.tf
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── terraform.tfvars
+│   └── variables.tf
+├── k8s
+│   ├── logging
+│   │   ├── cloudwatch-agent-configmap.yaml
+│   │   ├── efs-pv.yaml
+│   │   └── efs-pvc.yaml
+│   ├── monitoring
+│   │   ├── grafana
+│   │   ├── prometheus
+│   │   └── servicemonitor.yaml
+│   └── rbac
+│       ├── namespace.yaml
+│       ├── role.yaml
+│       └── rolebinding.yaml
+├── memory
+│   ├── README.md
+│   └── bootstrap
+│       ├── 2024-terraform-bootstrap-reflection.md
+│       ├── 2025-helm-integration-milestone.md
+│       ├── embeddings
+│       ├── intents
+│       └── schema
+├── repo-structure.txt
+├── scripts
+│   └── generate-kubeconfig.sh
+└── tools
+    └── README.md
+
+64 directories, 63 files
