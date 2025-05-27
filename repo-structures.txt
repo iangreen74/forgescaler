@@ -124,6 +124,7 @@
 │       ├── intents
 │       └── schema
 ├── repo-structure.txt
+├── repo-structures.txt
 ├── scripts
 │   └── generate-kubeconfig.sh
 └── tools
@@ -131,4 +132,4 @@
     └── memory-reader
         └── memory_reader.py
 
-65 directories, 67 files
+65 directories, 68 files

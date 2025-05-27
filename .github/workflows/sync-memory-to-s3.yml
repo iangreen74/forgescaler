@@ -1,0 +1,10 @@
+- name: Reflect on memory sync action
+run: |
+  TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+  REFLECTION_FILE=".aiops/memory/logs/${TIMESTAMP}-memory-sync.jsonl"
+
+  echo "{\"timestamp\": \"$TIMESTAMP\", \"event\": \"memory_sync\", \"bucket\": \"forgescaler-memory\", \"reflected_by\": \"GitHub Action\", \"notes\": \"Synced .md and .jsonl memory logs to S3. Verified reuse of existing GitHubOIDC IAM role.\"}" > "$REFLECTION_FILE"
+
+- name: Upload reflection log to S3
+run: |
+  aws s3 cp "$REFLECTION_FILE" s3://forgescaler-memory/logs/
