@@ -8,21 +8,26 @@ on:
 jobs:
   review:
     runs-on: ubuntu-latest
-    env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_REGION: us-east-1
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: pip install openai
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
 
-      - name: Generate Terraform Plan Output
+      - name: Terraform Init
+        run: terraform -chdir=infra init
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
+
+      - name: Terraform Plan
         run: terraform -chdir=infra plan -var-file="terraform.tfvars" > plan_output.txt
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: us-east-1
 
       - name: Run AI Terraform Review
         run: python scripts/ai_review.py

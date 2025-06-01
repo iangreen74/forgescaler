@@ -12,8 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Sync memory to S3
-        run: |
-          aws s3 sync .aiops/memory/ s3://forgescaler-memory/logs/
+        run: aws s3 sync .aiops/memory/ s3://forgescaler-memory/logs/
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
