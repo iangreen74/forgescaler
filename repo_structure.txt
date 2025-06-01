@@ -5,6 +5,7 @@
 │   ├── embeddings
 │   ├── memory
 │   │   └── logs
+│   │       └── 2025-05-18.jsonl
 │   ├── transformers
 │   └── triage-handlers
 ├── .github
@@ -53,21 +54,47 @@
 │   ├── README.md
 │   ├── agents
 │   │   ├── bootstrap-agent
+│   │   │   ├── Chart.yaml
+│   │   │   ├── templates
+│   │   │   └── values.yaml
 │   │   ├── executor-agent
+│   │   │   ├── Chart.yaml
+│   │   │   ├── templates
+│   │   │   └── values.yaml
 │   │   ├── intent-agent
+│   │   │   ├── Chart.yaml
+│   │   │   ├── templates
+│   │   │   └── values.yaml
 │   │   ├── planner-agent
+│   │   │   ├── Chart.yaml
+│   │   │   ├── templates
+│   │   │   └── values.yaml
 │   │   └── reflector-agent
+│   │       ├── Chart.yaml
+│   │       ├── templates
+│   │       └── values.yaml
 │   ├── apps
 │   │   ├── copilot-api
+│   │   │   ├── Chart.yaml
+│   │   │   ├── templates
+│   │   │   └── values.yaml
 │   │   └── copilot-console
+│   │       ├── Chart.yaml
+│   │       ├── templates
+│   │       └── values.yaml
 │   ├── base-infra
 │   │   ├── Chart.yaml
 │   │   ├── templates
+│   │   │   ├── deployment.yaml
+│   │   │   └── service.yaml
 │   │   └── values.yaml
 │   └── memory
 │       ├── Chart.yaml
 │       ├── templates
+│       │   ├── deployment.yaml
+│       │   └── service.yaml
 │       └── values.yaml
+├── contributing.md
 ├── docs
 │   └── README.md
 ├── infra
@@ -108,7 +135,9 @@
 │   │   └── efs-pvc.yaml
 │   ├── monitoring
 │   │   ├── grafana
+│   │   │   └── agent-memory.json
 │   │   ├── prometheus
+│   │   │   └── agent-alerts.yaml
 │   │   └── servicemonitor.yaml
 │   └── rbac
 │       ├── namespace.yaml
@@ -123,8 +152,7 @@
 │       ├── embeddings
 │       ├── intents
 │       └── schema
-├── repo-structure.txt
-├── repo-structures.txt
+├── repo_structure.txt
 ├── scripts
 │   └── generate-kubeconfig.sh
 └── tools
@@ -132,4 +160,4 @@
     └── memory-reader
         └── memory_reader.py
 
-65 directories, 68 files
+72 directories, 89 files
