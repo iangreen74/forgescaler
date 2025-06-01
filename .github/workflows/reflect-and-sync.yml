@@ -11,6 +11,8 @@ jobs:
   reflect:
     runs-on: ubuntu-latest
     steps:
+      - name: Ensure memory path exists
+        run: mkdir -p .aiops/memory/
       - name: Sync memory to S3
         run: aws s3 sync .aiops/memory/ s3://forgescaler-memory/logs/
         env:
