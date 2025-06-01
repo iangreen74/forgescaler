@@ -29,8 +29,9 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
 
-      - name: Run AI Terraform Review
-        run: python scripts/ai_review.py
+        - name: Run AI Terraform Review
+          id: run-ai-review
+          run: python scripts/ai_review.py        
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
