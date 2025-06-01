@@ -1,3 +1,4 @@
+# .github/workflows/memory-dashboard.yml
 name: Memory Dashboard
 
 on:
@@ -9,5 +10,20 @@ jobs:
   generate-dashboard:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate dashboard
-        run: echo "Generating memory dashboard..."
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: pip install markdown jinja2
+
+      - name: Generate HTML dashboard
+        run: |
+          python scripts/render_dashboard.py .aiops/memory/ dashboard.html
+
+      - name: Upload to S3
+        run: |
+          aws s3 cp dashboard.html s3://forgescaler-memory/dashboard.html
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1
