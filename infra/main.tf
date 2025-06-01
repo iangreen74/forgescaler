@@ -51,14 +51,14 @@ module "dns" {
   domain_name            = var.domain_name
 }
 
-module "network_v2" {
-  source = "./network"
-
+module "network" {
+  source               = "./modules/network"
   vpc_cidr_block       = var.vpc_cidr_block
   public_subnet_cidrs  = var.public_subnet_cidrs
   private_subnet_cidrs = var.private_subnet_cidrs
   availability_zones   = var.availability_zones
 }
+
 
 module "eks" {
   source             = "./eks"
