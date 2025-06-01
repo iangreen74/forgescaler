@@ -1,3 +1,4 @@
+# .github/workflows/sync-memory-to-s3.yml
 name: Sync Memory to S3
 
 on:
@@ -11,4 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Upload memory logs to S3
-        run: echo "Uploading logs to S3..."
+        run: |
+          aws s3 sync .aiops/memory/ s3://forgescaler-memory/logs/
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: us-east-1

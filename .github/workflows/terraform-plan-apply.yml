@@ -1,3 +1,4 @@
+# .github/workflows/terraform-plan-apply.yml
 name: Terraform Plan
 
 on:
@@ -9,6 +10,11 @@ on:
 jobs:
   terraform-plan:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: us-east-1
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
