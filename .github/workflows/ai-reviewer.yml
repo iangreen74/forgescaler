@@ -28,11 +28,14 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
 
+      - name: Ensure memory log folder exists
+        run: mkdir -p .aiops/memory/logs/
+
       - name: Run AI Terraform Review
         id: run-ai-review
         run: python scripts/ai_review.py
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_OUTPUT: ${{ github.output }}
 
       - name: Upload reflection to S3
         run: aws s3 cp .aiops/memory/logs/ s3://forgescaler-memory/logs/ --recursive
