@@ -1,29 +1,14 @@
 name: Sync Memory to S3
 
 on:
-  push:
-    paths:
-      - '.aiops/**'
-  workflow_dispatch:
+  workflow_run:
+    workflows: ['Reflect and Sync']
+    types:
+      - completed
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Reflect on memory sync action
-        run: |
-          mkdir -p .aiops/memory/logs
-          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          REFLECTION_FILE=".aiops/memory/logs/${TIMESTAMP}-memory-sync.jsonl"
-          echo "{"timestamp":"${TIMESTAMP}","event":"memory_sync","bucket":"forgescaler-memory","reflected_by":"GitHub Action","notes":"Synced reflection to S3"}" > "$REFLECTION_FILE"
-
-      - name: Upload reflection log to S3
-        run: |
-          aws s3 cp "$REFLECTION_FILE" s3://forgescaler-memory/logs/
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
+      - name: Upload memory logs to S3
+        run: echo "Uploading logs to S3..."

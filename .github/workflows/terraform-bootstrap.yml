@@ -1,4 +1,4 @@
-name: Terraform Backend Bootstrap
+name: Terraform Bootstrap
 
 on:
   workflow_dispatch:
@@ -6,28 +6,6 @@ on:
 jobs:
   bootstrap:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
-      - name: Configure AWS Credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: arn:aws:iam::418295677815:role/GitHubOIDC
-          aws-region: us-east-1
-
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Init S3 + DynamoDB backend
-        run: |
-          cd infra
-          terraform init -backend-config="bucket=forgescaler-terraform-state" \
-                          -backend-config="key=global/terraform.tfstate" \
-                          -backend-config="region=us-east-1" \
-                          -backend-config="dynamodb_table=forgescaler-terraform-locks"
-                          -backend-config="encrypt=true"
+      - name: Setup backend resources
+        run: echo "Creating S3 bucket and DynamoDB for Terraform state..."

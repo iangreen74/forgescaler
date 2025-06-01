@@ -1,47 +1,20 @@
-name: Helm Chart Deploy
+name: Helm Deploy
 
 on:
-  push:
+  pull_request:
     paths:
       - 'charts/**'
   workflow_dispatch:
 
 jobs:
-  helm:
+  helm-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
-      - name: Configure AWS Credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: arn:aws:iam::418295677815:role/GitHubOIDC
-          aws-region: us-east-1
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Set up Helm
+        uses: azure/setup-helm@v3
 
-      - name: Setup Helm
-        run: |
-          curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-
-      - name: Download kubeconfig artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: forgescaler-kubeconfig
-          path: kubeconfig
-
-      - name: Deploy all charts using generated kubeconfig
-        run: |
-          export KUBECONFIG=$PWD/kubeconfig/forgescaler.yaml
-
-          helm upgrade --install bootstrap-agent ./charts/agents/bootstrap-agent --namespace forgescaler --create-namespace
-          helm upgrade --install reflector-agent ./charts/agents/reflector-agent --namespace forgescaler
-          helm upgrade --install planner-agent ./charts/agents/planner-agent --namespace forgescaler
-          helm upgrade --install executor-agent ./charts/agents/executor-agent --namespace forgescaler
-          helm upgrade --install intent-agent ./charts/agents/intent-agent --namespace forgescaler
-
-          helm upgrade --install copilot-api ./charts/apps/copilot-api --namespace forgescaler
-          helm upgrade --install copilot-console ./charts/apps/copilot-console --namespace forgescaler
+      - name: Deploy with Helm
+        run: helm upgrade --install my-release ./charts

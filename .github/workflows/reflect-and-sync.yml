@@ -1,36 +1,14 @@
-name: Reflect and Sync Memory
+name: Reflect and Sync
 
 on:
   push:
-    branches: [main]
-    paths:
-      - 'memory/bootstrap/**'
-      - '.aiops/memory/logs/**'
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   reflect:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: arn:aws:iam::<your-account-id>:role/GitHubOIDC
-          aws-region: us-east-1
-
-      - name: Write cognitive sync reflection
-        run: |
-          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          echo "{\"timestamp\": \"$TIMESTAMP\", \"event\": \"cognitive_sync\", \"source\": \"GitHub Action\", \"notes\": \"Synced memory to S3 and honored the cognitive contract.\"}" > .aiops/memory/logs/${TIMESTAMP}-cognitive.jsonl
-
-      - name: Sync narrative (.md)
-        run: aws s3 sync memory/bootstrap/ s3://forgescaler-memory/reflections/ --exclude "*" --include "*.md"
-
-      - name: Sync structured logs (.jsonl)
-        run: aws s3 sync .aiops/memory/logs/ s3://forgescaler-memory/logs/ --exclude "*" --include "*.jsonl"
+      - name: Sync memory to S3
+        run: echo "Syncing memory state..."

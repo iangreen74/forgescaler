@@ -1,80 +1,23 @@
-name: Terraform Plan and Apply
+name: Terraform Plan
 
 on:
-  push:
+  pull_request:
     paths:
       - 'infra/**'
   workflow_dispatch:
 
 jobs:
-  terraform:
+  terraform-plan:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
-      - name: Configure AWS Credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v2
-        with:
-          role-to-assume: arn:aws:iam::418295677815:role/GitHubOIDC
-          aws-region: us-east-1
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
         run: terraform -chdir=infra init
 
       - name: Terraform Plan
-        run: terraform plan -var-file="terraform.tfvars" -out=tfplan
-        working-directory: infra/
-
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main'
-        run: terraform -chdir=infra apply -auto-approve
-
-      - name: Generate kubeconfig from Terraform outputs
-        id: generate_kubeconfig
-        run: |
-          echo "🔐 Generating kubeconfig..."
-
-          CLUSTER_NAME=$(terraform output -raw cluster_name)
-          CLUSTER_ENDPOINT=$(terraform output -raw cluster_endpoint)
-          CLUSTER_CA=$(terraform output -raw cluster_ca)
-
-          mkdir -p kubeconfig
-          cat > kubeconfig/forgescaler.yaml <<EOF
-          apiVersion: v1
-          clusters:
-          - cluster:
-              server: ${CLUSTER_ENDPOINT}
-              certificate-authority-data: ${CLUSTER_CA}
-            name: ${CLUSTER_NAME}
-          contexts:
-          - context:
-              cluster: ${CLUSTER_NAME}
-              user: aws
-            name: ${CLUSTER_NAME}
-          current-context: ${CLUSTER_NAME}
-          kind: Config
-          preferences: {}
-          users:
-          - name: aws
-            user:
-              exec:
-                apiVersion: client.authentication.k8s.io/v1beta1
-                command: aws
-                args:
-                  - "eks"
-                  - "get-token"
-                  - "--region"
-                  - "${AWS_REGION}"
-                  - "--cluster-name"
-                  - "${CLUSTER_NAME}"
-          EOF
-
-                  echo "✅ Kubeconfig written to kubeconfig/forgescaler.yaml"
+        run: terraform -chdir=infra plan -var-file="terraform.tfvars"
