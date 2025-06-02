@@ -1,0 +1,21 @@
+name: Structure Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-layout:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Validate Project Layout
+        run: python scripts/validate_layout.py

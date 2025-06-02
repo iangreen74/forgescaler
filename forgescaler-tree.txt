@@ -1,18 +1,16 @@
 .
+├── .DS_Store
 ├── .aiops
 │   ├── README.md
 │   ├── crds
 │   ├── embeddings
 │   ├── memory
 │   │   └── logs
-│   │       └── 2025-05-18.jsonl
 │   ├── memory.schema.json
 │   ├── reflector.py
 │   ├── transformers
 │   ├── triage
 │   │   └── handlers
-│   │       ├── chatgpt_pr_summary.py
-│   │       └── generate_dashboard.py
 │   └── triage-handlers
 ├── .github
 │   ├── README.md
@@ -63,64 +61,27 @@
 │   ├── README.md
 │   ├── agents
 │   │   ├── bootstrap-agent
-│   │   │   ├── Chart.yaml
-│   │   │   ├── templates
-│   │   │   │   ├── deployment.yaml
-│   │   │   │   └── service.yaml
-│   │   │   └── values.yaml
 │   │   ├── executor-agent
-│   │   │   ├── Chart.yaml
-│   │   │   ├── templates
-│   │   │   │   ├── deployment.yaml
-│   │   │   │   └── service.yaml
-│   │   │   └── values.yaml
 │   │   ├── intent-agent
-│   │   │   ├── Chart.yaml
-│   │   │   ├── templates
-│   │   │   │   ├── deployment.yaml
-│   │   │   │   └── service.yaml
-│   │   │   └── values.yaml
 │   │   ├── planner-agent
-│   │   │   ├── Chart.yaml
-│   │   │   ├── templates
-│   │   │   │   ├── deployment.yaml
-│   │   │   │   └── service.yaml
-│   │   │   └── values.yaml
 │   │   └── reflector-agent
-│   │       ├── Chart.yaml
-│   │       ├── templates
-│   │       │   ├── deployment.yaml
-│   │       │   └── service.yaml
-│   │       └── values.yaml
 │   ├── apps
 │   │   ├── copilot-api
-│   │   │   ├── Chart.yaml
-│   │   │   ├── templates
-│   │   │   │   ├── deployment.yaml
-│   │   │   │   └── service.yaml
-│   │   │   └── values.yaml
 │   │   └── copilot-console
-│   │       ├── Chart.yaml
-│   │       ├── templates
-│   │       │   ├── deployment.yaml
-│   │       │   └── service.yaml
-│   │       └── values.yaml
 │   ├── base-infra
 │   │   ├── Chart.yaml
 │   │   ├── templates
-│   │   │   ├── deployment.yaml
-│   │   │   └── service.yaml
 │   │   └── values.yaml
 │   └── memory
 │       ├── Chart.yaml
 │       ├── templates
-│       │   ├── deployment.yaml
-│       │   └── service.yaml
 │       └── values.yaml
 ├── contributing.md
 ├── docs
 │   └── README.md
+├── forgescaler-tree.txt
 ├── infra
+│   ├── .DS_Store
 │   ├── README.md
 │   ├── acm
 │   │   ├── main.tf
@@ -139,10 +100,8 @@
 │   │   ├── outputs.tf
 │   │   └── variables.tf
 │   ├── main.tf
-│   ├── network
-│   │   ├── main.tf
-│   │   ├── outputs.tf
-│   │   └── variables.tf
+│   ├── modules
+│   │   └── network
 │   ├── outputs.tf
 │   ├── s3
 │   │   ├── backend-resources.tf
@@ -151,6 +110,7 @@
 │   │   └── variables.tf
 │   ├── terraform.tfvars
 │   └── variables.tf
+├── infra-structure.txt
 ├── k8s
 │   ├── logging
 │   │   ├── cloudwatch-agent-configmap.yaml
@@ -158,9 +118,7 @@
 │   │   └── efs-pvc.yaml
 │   ├── monitoring
 │   │   ├── grafana
-│   │   │   └── agent-memory.json
 │   │   ├── prometheus
-│   │   │   └── agent-alerts.yaml
 │   │   └── servicemonitor.yaml
 │   └── rbac
 │       ├── namespace.yaml
@@ -175,14 +133,16 @@
 │       ├── embeddings
 │       ├── intents
 │       └── schema
+├── project-layout.json
 ├── repo-structure.txt
 ├── scripts
 │   ├── ai_review.py
 │   ├── generate-kubeconfig.sh
-│   └── render_dashboard.py
+│   ├── render_dashboard.py
+│   └── validate_layout.py
 └── tools
     ├── README.md
     └── memory-reader
         └── memory_reader.py
 
-74 directories, 112 files
+68 directories, 78 files
