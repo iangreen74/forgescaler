@@ -1,5 +1,11 @@
 terraform {
-  required_version = ">= 1.4.0"
+  backend "s3" {
+    bucket         = "forgescaler-terraform-state"
+    key            = "state/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "forgescaler-terraform-locks"
+    encrypt        = true
+  }
 
   required_providers {
     aws = {
@@ -7,72 +13,46 @@ terraform {
       version = "~> 5.0"
     }
   }
-
-  backend "s3" {
-    bucket = "forgescaler-terraform-state"
-    key    = "global/terraform.tfstate"
-    region = "us-east-1"
-  }
 }
 
 provider "aws" {
-  region = var.region
+  region = "us-east-1"
 }
 
-#module "network" {
-#source             = "./network"
-#name               = "forgemind-vpc"
-#cidr_block         = var.cidr_block
-#availability_zones = var.availability_zones
-#private_subnets    = var.private_subnets
-#public_subnets     = var.public_subnets
-#}
+module "network" {
+  source               = "./modules/network"
+  vpc_cidr_block       = var.vpc_cidr_block
+  public_subnet_cidrs  = var.public_subnet_cidrs
+  private_subnet_cidrs = var.private_subnet_cidrs
+  availability_zones   = var.availability_zones
+}
 
-module "iam" {
-  source    = "./iam"
-  role_name = var.role_name
+module "eks" {
+  source = "./modules/eks"
+
+  cluster_name       = var.cluster_name
+  vpc_id             = module.network.vpc_id
+  subnet_ids         = module.network.private_subnet_ids
+  availability_zones = var.availability_zones
 }
 
 module "s3" {
-  source      = "./s3"
-  bucket_name = var.bucket_name
+  source      = "./modules/s3"
+  bucket_name = var.s3_bucket_name
+}
+
+module "iam" {
+  source = "./modules/iam"
 }
 
 module "acm" {
-  source      = "./acm"
+  source      = "./modules/acm"
   domain_name = var.domain_name
+  zone_id     = var.zone_id
 }
 
 module "dns" {
-  source                 = "./dns"
-  zone_id                = var.zone_id
-  alias_zone_id          = var.alias_zone_id
-  cloudfront_domain_name = var.cloudfront_domain_name
-  domain_name            = var.domain_name
+  source      = "./modules/dns"
+  domain_name = var.domain_name
+  zone_id     = var.zone_id
 }
-
-module "eks" {
-  source       = "./eks"
-  cluster_name = var.cluster_name
-  subnet_ids   = module.network.private_subnets
-  vpc_id       = module.network.vpc_id
-}
-
-module "network_v2" {
-  source = "./network"
-
-  vpc_cidr_block     = var.vpc_cidr_block_v2
-  availability_zones = var.availability_zones
-}
-
-
-module "eks" {
-  source             = "./eks"
-  cluster_name       = "forgescaler-cluster"
-  subnet_ids         = module.network_v2.private_subnet_ids
-  vpc_id             = module.network_v2.vpc_id
-  availability_zones = var.availability_zones
-}
-
-
-
