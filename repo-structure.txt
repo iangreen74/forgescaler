@@ -6,12 +6,21 @@
 │   ├── memory
 │   │   └── logs
 │   │       └── 2025-05-18.jsonl
+│   ├── memory.schema.json
+│   ├── reflector.py
 │   ├── transformers
+│   ├── triage
+│   │   └── handlers
+│   │       ├── chatgpt_pr_summary.py
+│   │       └── generate_dashboard.py
 │   └── triage-handlers
 ├── .github
 │   ├── README.md
 │   └── workflows
+│       ├── ai-reviewer.yml
+│       ├── apply-if-approved.yml
 │       ├── helm-deploy.yml
+│       ├── memory-dashboard.yml
 │       ├── reflect-and-sync.yml
 │       ├── sync-memory-to-s3.yml
 │       ├── terraform-bootstrap.yml
@@ -56,31 +65,45 @@
 │   │   ├── bootstrap-agent
 │   │   │   ├── Chart.yaml
 │   │   │   ├── templates
+│   │   │   │   ├── deployment.yaml
+│   │   │   │   └── service.yaml
 │   │   │   └── values.yaml
 │   │   ├── executor-agent
 │   │   │   ├── Chart.yaml
 │   │   │   ├── templates
+│   │   │   │   ├── deployment.yaml
+│   │   │   │   └── service.yaml
 │   │   │   └── values.yaml
 │   │   ├── intent-agent
 │   │   │   ├── Chart.yaml
 │   │   │   ├── templates
+│   │   │   │   ├── deployment.yaml
+│   │   │   │   └── service.yaml
 │   │   │   └── values.yaml
 │   │   ├── planner-agent
 │   │   │   ├── Chart.yaml
 │   │   │   ├── templates
+│   │   │   │   ├── deployment.yaml
+│   │   │   │   └── service.yaml
 │   │   │   └── values.yaml
 │   │   └── reflector-agent
 │   │       ├── Chart.yaml
 │   │       ├── templates
+│   │       │   ├── deployment.yaml
+│   │       │   └── service.yaml
 │   │       └── values.yaml
 │   ├── apps
 │   │   ├── copilot-api
 │   │   │   ├── Chart.yaml
 │   │   │   ├── templates
+│   │   │   │   ├── deployment.yaml
+│   │   │   │   └── service.yaml
 │   │   │   └── values.yaml
 │   │   └── copilot-console
 │   │       ├── Chart.yaml
 │   │       ├── templates
+│   │       │   ├── deployment.yaml
+│   │       │   └── service.yaml
 │   │       └── values.yaml
 │   ├── base-infra
 │   │   ├── Chart.yaml
@@ -152,12 +175,14 @@
 │       ├── embeddings
 │       ├── intents
 │       └── schema
-├── repo_structure.txt
+├── repo-structure.txt
 ├── scripts
-│   └── generate-kubeconfig.sh
+│   ├── ai_review.py
+│   ├── generate-kubeconfig.sh
+│   └── render_dashboard.py
 └── tools
     ├── README.md
     └── memory-reader
         └── memory_reader.py
 
-72 directories, 89 files
+74 directories, 112 files
