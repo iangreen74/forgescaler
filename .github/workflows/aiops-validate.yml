@@ -1,0 +1,31 @@
+name: Validate Structure & Variables
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  aiops-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Run Workflow Path Audit
+        run: python scripts/workflow_path_audit.py
+
+      - name: Run Terraform Input Checker
+        run: python scripts/terraform_input_checker.py
+
+      - name: Print Combined AIOps Report
+        run: |
+          echo "🔎 Combined AIOps Summary:"
+          cat .aiops/memory/logs/path_audit.jsonl || echo "No path issues found."
+          cat .aiops/memory/logs/var_mismatch.jsonl || echo "No variable issues found."
