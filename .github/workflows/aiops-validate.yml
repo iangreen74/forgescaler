@@ -1,10 +1,10 @@
 name: Validate Structure & Variables
-
 on:
-  pull_request:
+  push:
     branches:
       - main
-  push:
+      - enforce-structure
+  pull_request:
     branches:
       - main
 
