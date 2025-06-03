@@ -1,0 +1,65 @@
+{
+  ".aiops": {
+    "files": ["README.md", "memory.schema.json", "reflector.py"],
+    "dirs": ["crds", "embeddings", "memory/logs", "transformers", "triage/handlers", "triage-handlers"]
+  },
+  ".github/workflows": {
+    "files": [
+      "ai-reviewer.yml",
+      "apply-if-approved.yml",
+      "helm-deploy.yml",
+      "memory-dashboard.yml",
+      "reflect-and-sync.yml",
+      "sync-memory-to-s3.yml",
+      "terraform-bootstrap.yml",
+      "terraform-plan-apply.yml"
+    ]
+  },
+  ".mlops": {
+    "dirs": ["data", "models", "monitoring", "pipelines", "retrain"]
+  },
+  "agents": {
+    "dirs": [
+      "base-agent",
+      "bootstrap-agent",
+      "embedding-indexer",
+      "executor-agent",
+      "intent-agent",
+      "memory-reflector-agent",
+      "planner-agent",
+      "reflector-agent"
+    ]
+  },
+  "apps": {
+    "dirs": ["copilot-api", "copilot-console", "status-dashboard"]
+  },
+  "charts": {
+    "dirs": [
+      "agents/bootstrap-agent",
+      "agents/executor-agent",
+      "agents/intent-agent",
+      "agents/planner-agent",
+      "agents/reflector-agent",
+      "apps/copilot-api",
+      "apps/copilot-console",
+      "base-infra",
+      "memory"
+    ]
+  },
+  "infra": {
+    "files": ["main.tf", "outputs.tf", "terraform.tfvars", "variables.tf"],
+    "dirs": ["acm", "dns", "eks", "iam", "modules/network", "s3"]
+  },
+  "k8s": {
+    "dirs": ["logging", "monitoring/grafana", "monitoring/prometheus", "rbac"]
+  },
+  "memory": {
+    "dirs": ["bootstrap/embeddings", "bootstrap/intents", "bootstrap/schema"]
+  },
+  "scripts": {
+    "files": ["ai_review.py", "generate-kubeconfig.sh", "render_dashboard.py", "validate_layout.py"]
+  },
+  "tools": {
+    "dirs": ["memory-reader"]
+  }
+}
