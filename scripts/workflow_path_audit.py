@@ -45,7 +45,7 @@ def scan_workflows(valid_paths):
                     continue
                 for word in run_cmd.split():
                     if "/" in word and not word.startswith("http"):
-                        cleaned = word.strip(" "'")
+                        cleaned = word.strip(' "\'')
                         if cleaned not in valid_paths:
                             logs.append({
                                 "type": "path_mismatch",
