@@ -1,3 +1,13 @@
+name: Validate Structure & Variables
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
 jobs:
   aiops-validate:
     runs-on: ubuntu-latest
