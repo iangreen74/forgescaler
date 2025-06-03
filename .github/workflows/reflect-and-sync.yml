@@ -19,6 +19,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install required Python packages
+        run: pip install boto3 pyyaml
+
       - name: Ensure memory path exists
         run: mkdir -p .aiops/memory/logs
 
