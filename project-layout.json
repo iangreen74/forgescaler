@@ -47,3 +47,19 @@
     ]
   },
   "infra": {
+    "files": ["main.tf", "outputs.tf", "terraform.tfvars", "variables.tf"],
+    "dirs": ["acm", "dns", "eks", "iam", "modules/network", "s3"]
+  },
+  "k8s": {
+    "dirs": ["logging", "monitoring/grafana", "monitoring/prometheus", "rbac"]
+  },
+  "memory": {
+    "dirs": ["bootstrap/embeddings", "bootstrap/intents", "bootstrap/schema"]
+  },
+  "scripts": {
+    "files": ["ai_review.py", "generate-kubeconfig.sh", "render_dashboard.py", "validate_layout.py"]
+  },
+  "tools": {
+    "dirs": ["memory-reader"]
+  }
+}
