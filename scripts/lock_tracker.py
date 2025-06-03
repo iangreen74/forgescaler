@@ -1,6 +1,10 @@
 import boto3
 import json
+import os
 from datetime import datetime
+
+region = os.environ.get("AWS_REGION", "us-east-1")
+client = boto3.client("dynamodb", region_name=region)
 
 DYNAMODB_TABLES = [
     "forgescaler-terraform-locks",
