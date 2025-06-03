@@ -1,7 +1,17 @@
+name: Validate Structure & Variables
+
+on:
+  push:
+    branches:
+      - main
+      - enforce-structure
+  pull_request:
+    branches:
+      - main
+
 jobs:
   aiops-validate:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
