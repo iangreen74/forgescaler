@@ -44,9 +44,10 @@ module "acm" {
 }
 
 module "dns" {
-  source      = "./dns"
-  domain_name = var.domain_name
-  zone_id     = var.zone_id
+  source                 = "./dns"
+  domain_name            = var.domain_name
+  zone_id                = var.zone_id
+  cloudfront_domain_name = var.cloudfront_domain_name
 }
 
 module "eks" {
