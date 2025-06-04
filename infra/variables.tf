@@ -42,3 +42,13 @@ variable "zone_id" {
   description = "Route 53 zone ID for the domain"
   type        = string
 }
+
+variable "cloudfront_domain_name" {
+  description = "Domain name for CloudFront distribution"
+  type        = string
+}
+
+variable "alias_zone_id" {
+  description = "Route53 alias zone ID"
+  type        = string
+}
