@@ -1,0 +1,6 @@
+{"type": "missing_tfvar", "variable": "vpc_id", "source": "infra/variables.tf", "message": "Required variable 'vpc_id' not found in terraform.tfvars"}
+{"type": "missing_tfvar", "variable": "subnet_ids", "source": "infra/variables.tf", "message": "Required variable 'subnet_ids' not found in terraform.tfvars"}
+{"type": "missing_tfvar", "variable": "role_name", "source": "infra/variables.tf", "message": "Required variable 'role_name' not found in terraform.tfvars"}
+{"type": "missing_tfvar", "variable": "aws_region", "source": "infra/variables.tf", "message": "Required variable 'aws_region' not found in terraform.tfvars"}
+{"type": "missing_tfvar", "variable": "cluster_name", "source": "infra/variables.tf", "message": "Required variable 'cluster_name' not found in terraform.tfvars"}
+{"type": "missing_tfvar", "variable": "bucket_name", "source": "infra/variables.tf", "message": "Required variable 'bucket_name' not found in terraform.tfvars"}

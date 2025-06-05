@@ -1,0 +1,4 @@
+{"type": "path_mismatch", "workflow": ".github/workflows/reflect-and-sync.yml", "referenced_path": "scripts/lock_tracker.py", "message": "Path not found in project-layout.json"}
+{"type": "path_mismatch", "workflow": ".github/workflows/reflect-and-sync.yml", "referenced_path": ".aiops/memory/", "message": "Path not found in project-layout.json"}
+{"type": "path_mismatch", "workflow": ".github/workflows/reflect-and-sync.yml", "referenced_path": "s3://forgescaler-memory/logs/", "message": "Path not found in project-layout.json"}
+{"type": "path_mismatch", "workflow": ".github/workflows/reflect-and-sync.yml", "referenced_path": "scripts/render_reflection_md.py", "message": "Path not found in project-layout.json"}
