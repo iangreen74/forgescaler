@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: { include "base-infra.fullname" . }
+  name: {{ include "base-infra.fullname" . }}
 spec:
-  type: { .Values.service.type }
+  type: {{ .Values.service.type }}
   ports:
-    - port: { .Values.service.port }
+    - port: {{ .Values.service.port }}
   selector:
-    app: { include "base-infra.name" . }
+    app: {{ include "base-infra.name" . }}
