@@ -27,3 +27,13 @@ output "eks_oidc_provider" {
   description = "EKS OIDC provider"
   value       = module.eks.oidc_provider
 }
+
+output "eks_cluster_name" {
+  description = "EKS Cluster Name"
+  value       = module.eks.cluster_name
+}
+
+output "eks_cluster_ca" {
+  description = "EKS Cluster CA"
+  value       = module.eks.cluster_certificate_authority_data
+}

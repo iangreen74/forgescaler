@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { include "executor-agent.fullname" . }
+  name: {{ include "executor-agent.fullname" . }}
 spec:
-  replicas: { .Values.replicaCount }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: { include "executor-agent.name" . }
+      app: {{ include "executor-agent.name" . }}
   template:
     metadata:
       labels:
-        app: { include "executor-agent.name" . }
+        app: {{ include "executor-agent.name" . }}
     spec:
       containers:
-        - name: { .Chart.Name }
-          image: "{ .Values.image.repository }:{ .Values.image.tag }"
-          imagePullPolicy: { .Values.image.pullPolicy }
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
 
           volumeMounts:
