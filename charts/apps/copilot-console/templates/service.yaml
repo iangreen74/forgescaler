@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: { include "copilot-console.fullname" . }
+  name: {{ include "copilot-console.fullname" . }}
 spec:
-  type: { .Values.service.type }
+  type: {{ .Values.service.type }}
   ports:
-    - port: { .Values.service.port }
+    - port: {{ .Values.service.port }}
   selector:
-    app: { include "copilot-console.name" . }
+    app: {{ include "copilot-console.name" . }}
