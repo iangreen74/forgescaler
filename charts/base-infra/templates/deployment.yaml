@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { include "base-infra.fullname" . }
+  name: {{ include "base-infra.fullname" . }}
 spec:
-  replicas: { .Values.replicaCount }
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: { include "base-infra.name" . }
+      app: {{ include "base-infra.name" . }}
   template:
     metadata:
       labels:
-        app: { include "base-infra.name" . }
+        app: {{ include "base-infra.name" . }}
     spec:
       containers:
-        - name: { .Chart.Name }
-          image: "{ .Values.image.repository }:{ .Values.image.tag }"
-          imagePullPolicy: { .Values.image.pullPolicy }
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - containerPort: 80

@@ -5,10 +5,10 @@ metadata:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8080"
     prometheus.io/path: "/metrics"
-  name: { include "executor-agent.fullname" . }
+  name: {{ include "executor-agent.fullname" . }}
 spec:
-  type: { .Values.service.type }
+  type: {{ .Values.service.type }}
   ports:
-    - port: { .Values.service.port }
+    - port: {{ .Values.service.port }}
   selector:
-    app: { include "executor-agent.name" . }
+    app: {{ include "executor-agent.name" . }}

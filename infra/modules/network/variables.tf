@@ -3,6 +3,11 @@ variable "vpc_cidr_block" {
   type        = string
 }
 
+variable "name" {
+  description = "Base name used for tagging resources"
+  type        = string
+}
+
 variable "public_subnet_cidrs" {
   description = "List of CIDR blocks for public subnets"
   type        = list(string)
