@@ -34,15 +34,3 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
-
-      - name: Generate kubeconfig
-        run: |
-          CLUSTER_NAME=$(terraform -chdir=infra output -raw eks_cluster_name)
-          CLUSTER_ENDPOINT=$(terraform -chdir=infra output -raw eks_cluster_endpoint)
-          CLUSTER_CA=$(terraform -chdir=infra output -raw eks_cluster_ca)
-          scripts/generate-kubeconfig.sh "$CLUSTER_NAME" "$CLUSTER_ENDPOINT" "$CLUSTER_CA" us-east-1 ./kubeconfig
-      - name: Upload kubeconfig
-        uses: actions/upload-artifact@v4
-        with:
-          name: kubeconfig
-          path: kubeconfig
