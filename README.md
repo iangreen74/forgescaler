@@ -40,8 +40,6 @@ ForgeScaler automates provisioning, self-reflects on its own operations, and evo
 
 ## 🏗️ Architecture Overview
 
-> _(Add `docs/architecture-diagram.png` here when ready)_
-
 ```text
 ├── agents/             → Intelligent deployment agents (bootstrap, planner, executor)
 ├── memory/             → Reflections, schema, and cognitive logs
