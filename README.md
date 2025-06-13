@@ -1,102 +1,84 @@
 # ForgeScaler
 
-**An AI-Native Operating System for Autonomous AI Infrastructure**
+**A Control Plane for AI-Native Infrastructure Automation**
 
-From Raspberry Pi to NVIDIA H200 — ForgeScaler is designed to orchestrate secure AI workloads with memory-driven agents, full-stack observability, and fully automated DevOps workflows.
+ForgeScaler is an open-source system for automating the provisioning, orchestration, and introspection of AI infrastructure environments. It uses agent-based workflows and a persistent memory system to deploy, monitor, and evolve machine learning infrastructure over time.
 
----
-
-## 🧠 What is ForgeScaler?
-
-ForgeScaler is a **recursive, memory-powered DevOps operating system** for deploying and managing AI-native infrastructure — from edge devices to GPU clusters and beyond.
-
-It serves as the core software layer behind [VaultScaler](https://vaultscaler.com), a boutique AI data center designed for **air-gapped inference**, **lightweight model fine-tuning**, and **tenant-grade AI automation**.
-
-ForgeScaler automates provisioning, self-reflects on its own operations, and evolves through intelligent agents and persistent memory — allowing infrastructure to **think**, **adapt**, and **scale itself**.
+Built for DevOps and MLOps engineers working with GPUs, Kubernetes, and secure inference workloads.
 
 ---
 
-## 🔧 Core Features
+## Key Features
 
-- 🤖 **Agent-Based Architecture**  
-  Modular agents handle bootstrapping, planning, orchestration, and memory reflection.
+- 🧠 **Memory-Aware DevOps**  
+  Persistent structured logs, cognitive reflections, and drift analysis to improve infrastructure over time.
 
-- 🧬 **Recursive Memory System**  
-  Every Terraform apply, drift, failure, or anomaly is reflected into structured logs, visualized via dashboards, and used to improve future deployments.
+- 🤖 **Modular Agent Architecture**  
+  Intelligent agents coordinate bootstrapping, planning, execution, and runtime introspection.
 
-- 📦 **End-to-End Infrastructure as Code**  
-  Fully integrated with Terraform, Helm, Kubernetes, Prometheus, GitHub Actions, and AI-powered validation tools.
+- 🔧 **Infrastructure-as-Code by Default**  
+  Native integration with Terraform and Helm. Declarative, auditable, and reproducible deployments.
 
-- 🌐 **Multi-Environment Support**  
-  Works across edge devices (Raspberry Pi), cloud Kubernetes (EKS), and bare-metal H100/H200 servers.
+- 📈 **AI-Augmented CI/CD**  
+  GitHub Actions for plan/apply pipelines, lock detection, AI-driven validation, and workflow audit trails.
 
-- 📈 **AI-Augmented Observability**  
-  Realtime dashboards, memory triage, lock tracking, and reflective drift analysis.
-
-- 🧰 **Self-Repair and Self-Insight**  
-  Designed to detect and analyze infrastructure issues before they cause failures.
+- ☁️ **GPU-Aware Orchestration**  
+  Prepares infrastructure for inference, lightweight fine-tuning, and secure, tenant-grade workloads.
 
 ---
 
-## 🏗️ Architecture Overview
-
-> _(Add `docs/architecture-diagram.png` here when ready)_
+## Architecture Overview
 
 ```text
-├── agents/             → Intelligent deployment agents (bootstrap, planner, executor)
-├── memory/             → Reflections, schema, and cognitive logs
-├── scripts/            → Triage, rendering, lock tracking, AI review tools
-├── infra/              → Terraform modules (network, IAM, S3, EKS, etc.)
-├── charts/             → Helm templates for services and memory orchestration
-├── apps/               → Copilot Console (React), APIs, dashboard UI
-├── .github/workflows/  → GitHub Actions for plan/apply, AI validation, memory sync
-🚀 Use Cases
-🖥️ Spin up a self-debugging GPU node from your apartment using a single H200 or Pi
+├── agents/             → Deployment agents for planning, execution, and reflection
+├── memory/             → Operational reflections and structured logs
+├── infra/              → Terraform modules for AWS (EKS, IAM, networking, etc.)
+├── charts/             → Helm charts for apps, agents, and memory systems
+├── apps/               → Web console, status dashboard, and API layer
+├── scripts/            → CLI tools for memory triage, lock tracking, and dashboard generation
+├── .github/workflows/  → GitHub Actions for automated provisioning and self-review
 
-🔒 Launch air-gapped inference environments for privacy-conscious clients
+Use Cases
+Automate the provisioning of GPU-backed Kubernetes environments for AI workloads
 
-🧠 Run tenant-based AI workloads with isolation and observability
+Integrate self-reflecting infrastructure into existing DevOps CI/CD workflows
 
-🌍 Create a decentralized AI hosting network built on self-provisioning hardware
+Monitor drift and deployment history using memory-based observability tools
 
-🛤️ Roadmap
- Agent-based bootstrap and memory layer
+Launch multi-tenant inference and model-serving infrastructure with built-in automation
 
- Terraform + Helm + EKS automation
+Roadmap
+ Memory schema, reflection system, and dashboard
 
- Lock tracking, drift detection, memory logging
+ Agent-based bootstrapping and deployment pipeline
 
- Copilot dashboard and AI workflow review
+ GitHub CI/CD with AI review and drift validation
 
- GPU workload queueing and tenant provisioning
+ GPU workload queueing and fine-tuning orchestration
 
- Lightweight fine-tuning pipelines (LoRA, adapters)
+ Secure multi-tenant provisioning
 
- High-trust service mesh (gRPC + token auth)
+ Deployment packaging and service mesh integration
 
- Quantum abstraction layer (long-term research)
 
-💡 Philosophy
-We believe infrastructure should not just run workloads — it should learn from them.
+ Philosophy
+ForgeScaler treats infrastructure as an evolving system — one that can observe itself, remember what went wrong, and improve continuously.
 
-ForgeScaler brings together principles of automation, intelligence, and evolution into one recursive DevOps platform.
+ForgeScaler blends DevOps automation with introspection to support secure, production-grade AI systems.
 
-Inspired by nature, cognition, and distributed systems — ForgeScaler is designed for founders and engineers who want sovereign control over AI infrastructure.
 
-🔭 Looking Ahead
-While our current focus is on GPUs and secure multi-tenant orchestration, ForgeScaler is designed to evolve with emerging compute paradigms — including quantum — as they become practically viable.
+Getting Started
+git clone https://github.com/iangreen74/forgescaler.git
+cd forgescaler
+make bootstrap
+Then apply infrastructure and deploy agents using Terraform + Helm.
 
-🧑‍🚀 Built By
+
+Author
 Ian Green
-https://iangreen.io
 Founder of VaultScaler
+https://iangreen.io
 
-🙌 Contributing
-We welcome contributors who align with the vision.
-Please see CONTRIBUTING.md before opening a PR.
-
-🛡️ License
-This project is licensed under the MIT License.
-
-
+License
+Licensed under the MIT License.
 ```
