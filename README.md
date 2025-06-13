@@ -1,69 +1,39 @@
-# 🧠 ForgeScaler — The Reflexive DevOps Fabric
+# ForgeScaler
 
-**ForgeScaler** is a self-reflecting, AI-augmented DevOps platform that transforms raw ideas into fully deployed, continuously evolving cloud systems.
+**An AI-native Operating System for Autonomous AI Infrastructure**
 
-> Think of it as a recursive nervous system for your software — one that builds, monitors, corrects, and evolves itself.
-
----
-
-## 🚀 What It Does
-
-ForgeScaler provides:
-
-- 🧠 **AI-powered CI/CD/CR:** Create → Deploy → Reflect
-- 📦 **Terraform + Helm orchestration**
-- 🕸️ **Reflex agents** that watch infrastructure, code, and memory
-- 🔒 **Lock-aware infrastructure intelligence** (coming soon)
-- 📚 **Immutable memory** stored in `.jsonl` and `.md` for transparency
-- 🔁 **Recursive review and drift correction** powered by LLMs
+> From Raspberry Pi to NVIDIA H200 to Quantum Compute.  
+> Built for founders, researchers, and privacy-first operators seeking complete control over AI inference and infrastructure.
 
 ---
 
-## 📐 Architecture
+## 🧠 What is ForgeScaler?
+
+**ForgeScaler** is a recursive, memory-powered DevOps operating system for deploying AI-native infrastructure — whether on a single GPU node or across a distributed data center.
+
+It automates everything: provisioning, monitoring, and stores all events that are used as a detabase for future troubleshooting with AI.
+
+This project powers [VaultScaler](https://vaultscaler.com) — a boutique, air-gapped AI data center currently under development in Las Vegas, Nevasa. Vaultscaler will be offering boutique. security conscious inference and lightweight fine-tuning for privacy-conscious clients.
 
 ---
 
-## 🗂️ Project Structure
+## 🔧 Core Features
 
-| Folder     | Purpose                                      |
-| ---------- | -------------------------------------------- |
-| `infra/`   | Terraform modules (EKS, S3, Route53, IAM…)   |
-| `charts/`  | Helm charts for agents and apps              |
-| `agents/`  | Reflective AI components (intent, executor…) |
-| `scripts/` | CI tools: layout validator, reviewers        |
-| `memory/`  | Bootstrap logs + generated memory            |
-| `.aiops/`  | Triagers, handlers, embeddings, schema       |
+- 🤖 **Agent-Based Architecture**  
+  Modular, intelligent agents for planning, execution, introspection, and recovery.
 
----
+- 🧬 **Recursive Memory System**  
+  Logs every decision, every deployment, every drift — and uses it to get smarter.
 
-## 🌍 Vision
+- ☁️ **Cloud-Native + Bare-Metal Ready**  
+  Compatible with EKS, self-hosted Kubernetes, Raspberry Pi clusters, or future quantum backends.
 
-ForgeScaler is not just automation. It’s cognition.
+- 🧠 **AI-Powered Observability**  
+  Real-time dashboards, reflection engines, and autonomous lock tracking.
 
-We believe:
-
-- Infra should write and review itself.
-- Memory should evolve alongside code.
-- Every deployment should be part of a recursive learning loop.
+- 🧰 **Full DevOps Pipeline**  
+  GitHub Actions, Terraform modules, Helm charts, RBAC, Prometheus, Grafana, and more — fully integrated.
 
 ---
 
-## 🛣️ Roadmap
-
-- [x] Canonical structure enforcement via `project-layout.json`
-- [x] AI-powered PR reviews + terraform plan validation
-- [ ] Lock detection & memory logging
-- [ ] Visual dashboards for memory + state evolution
-- [ ] One-click bootstrap from plain English intent
-
----
-
-## 🧠 Motto
-
-> _“Let your system build itself, understand itself, and evolve itself.”_
-
----
-
-## 👁️ Visual Identity
-
-_Logo and architectural diagram coming soon…_
+## 🗺️ Repo Overview
