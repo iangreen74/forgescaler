@@ -1,100 +1,80 @@
 # ForgeScaler
 
-**An AI-Native Operating System for Autonomous AI Infrastructure**
+**ForgeScaler** is an AI-native operating system that powers the deployment, memory, and orchestration of sovereign AI infrastructure — starting with the [VaultScaler One](https://vaultscaler.com) security appliance.
 
-From Raspberry Pi to NVIDIA H200 — ForgeScaler is designed to orchestrate secure AI workloads with memory-driven agents, full-stack observability, and fully automated DevOps workflows.
-
----
-
-## 🧠 What is ForgeScaler?
-
-ForgeScaler is a **recursive, memory-powered DevOps operating system** for deploying and managing AI-native infrastructure — from edge devices to GPU clusters and beyond.
-
-It serves as the core software layer behind [VaultScaler](https://vaultscaler.com), a boutique AI data center designed for **air-gapped inference**, **lightweight model fine-tuning**, and **tenant-grade AI automation**.
-
-ForgeScaler automates provisioning, self-reflects on its own operations, and evolves through intelligent agents and persistent memory — allowing infrastructure to **think**, **adapt**, and **scale itself**.
+Built for edge-first autonomy, ForgeScaler enables modular, reflective, fully offline systems capable of local inference, AI memory, and secure operational intelligence.
 
 ---
 
-## 🔧 Core Features
+## 🏠 Powered Product: VaultScaler One
 
-- 🤖 **Agent-Based Architecture**  
-  Modular agents handle bootstrapping, planning, orchestration, and memory reflection.
+VaultScaler One is a plug-and-play AI security guard in a box:
 
-- 🧬 **Recursive Memory System**  
-  Every Terraform apply, drift, failure, or anomaly is reflected into structured logs, visualized via dashboards, and used to improve future deployments.
-
-- 📦 **End-to-End Infrastructure as Code**  
-  Fully integrated with Terraform, Helm, Kubernetes, Prometheus, GitHub Actions, and AI-powered validation tools.
-
-- 🌐 **Multi-Environment Support**  
-  Works across edge devices (Raspberry Pi), cloud Kubernetes (EKS), and bare-metal H100/H200 servers.
-
-- 📈 **AI-Augmented Observability**  
-  Realtime dashboards, memory triage, lock tracking, and reflective drift analysis.
-
-- 🧰 **Self-Repair and Self-Insight**  
-  Designed to detect and analyze infrastructure issues before they cause failures.
+- Runs facial recognition and threat detection **entirely offline**
+- Logs memory and system state to `.aiops/memory/`
+- Deploys using `bootstrap_jetson.sh` on **Jetson Orin NX**
+- Ships with pre-configured ONNX models and sync logic
 
 ---
 
-## 🏗️ Architecture Overview
+## 🧠 Core Concepts
 
-```text
-├── agents/             → Intelligent deployment agents (bootstrap, planner, executor)
-├── memory/             → Reflections, schema, and cognitive logs
-├── scripts/            → Triage, rendering, lock tracking, AI review tools
-├── infra/              → Terraform modules (network, IAM, S3, EKS, etc.)
-├── charts/             → Helm templates for services and memory orchestration
-├── apps/               → Copilot Console (React), APIs, dashboard UI
-├── .github/workflows/  → GitHub Actions for plan/apply, AI validation, memory sync
-🚀 Use Cases
-🖥️ Spin up a self-debugging GPU node from your apartment using a single H200 or Pi
+### 🔁 Reflective Memory System
 
-🔒 Launch air-gapped inference environments for privacy-conscious clients
+- All system actions and observations are recorded in `.jsonl` memory logs
+- `.aiops/state/*.json` tracks per-device configuration
+- Actions reflect into structured memory for analysis and reproducibility
 
-🧠 Run tenant-based AI workloads with isolation and observability
+### 🧩 Modular AI Agents
 
-🌍 Create a decentralized AI hosting network built on self-provisioning hardware
+- `inference-agent`, `reflector-agent`, `intent-agent`, etc.
+- Each unit of logic is containerized and version-controlled
+- Helm-based charts for each service layer
 
-🛤️ Roadmap
- Agent-based bootstrap and memory layer
+---
 
- Terraform + Helm + EKS automation
+## 🛠️ Repo Structure
 
- Lock tracking, drift detection, memory logging
+- `build/inference-agent/` — FastAPI + ONNX runtime for vision models
+- `charts/` — Helm charts for agents, inference, memory
+- `scripts/` — Bootstrap, sync, layout validation, memory reflectors
+- `.aiops/` — Memory logs, state files, triage handlers
+- `README.jetson.md` — Hardware-specific Jetson One setup
 
- Copilot dashboard and AI workflow review
+---
 
- GPU workload queueing and tenant provisioning
+## ⚙️ Features
 
- Lightweight fine-tuning pipelines (LoRA, adapters)
+- Runs on:
+  - Raspberry Pi
+  - Jetson Orin NX
+  - Cloud-native EKS (for multi-node prototypes)
+- Supports GitHub Actions for:
+  - Plan validation
+  - Reflective memory updates
+  - Deployment lifecycle
 
- High-trust service mesh (gRPC + token auth)
+---
 
- Quantum abstraction layer (long-term research)
+## 🧭 Roadmap
 
-💡 Philosophy
-We believe infrastructure should not just run workloads — it should learn from them.
+- [x] Jetson Orin support
+- [x] AIOps memory log system
+- [x] VaultScaler One MVP live
+- [ ] VaultStore plugin manager
+- [ ] Live dashboard from `.jsonl` logs
+- [ ] Multi-device orchestration (VaultMesh)
 
-ForgeScaler brings together principles of automation, intelligence, and evolution into one recursive DevOps platform.
+---
 
-Inspired by nature, cognition, and distributed systems — ForgeScaler is designed for founders and engineers who want sovereign control over AI infrastructure.
+## 🔗 Related Projects
 
-🔭 Looking Ahead
-While our current focus is on GPUs and secure multi-tenant orchestration, ForgeScaler is designed to evolve with emerging compute paradigms — including quantum — as they become practically viable.
+- 🔒 [VaultScaler One](https://vaultscaler.com) — Consumer-facing product powered by ForgeScaler
+- 🌐 [iangreen.io](https://iangreen.io) — Creator site and system architecture journal
 
-🧑‍🚀 Built By
-Ian Green
-https://iangreen.io
-Founder of VaultScaler
+---
 
-🙌 Contributing
-We welcome contributors who align with the vision.
-Please see CONTRIBUTING.md before opening a PR.
+## 🧑‍💻 Author
 
-🛡️ License
-This project is licensed under the MIT License.
-
-
-```
+Built by [Ian Green](https://iangreen.io)  
+Las Vegas, NV · DevOps Engineer · Systems Architect
