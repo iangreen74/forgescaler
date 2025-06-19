@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VaultScaler Device Fleet</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+    }
+    th {
+      background: #222;
+      color: white;
+    }
+    tr:hover {
+      background: #eef;
+    }
+  </style>
+</head>
+<body>
+  <h1>VaultScaler One – Device Fleet Dashboard</h1>
+  <table id="deviceTable">
+    <thead>
+      <tr>
+        <th>Device</th>
+        <th>Status</th>
+        <th>Model</th>
+        <th>Location</th>
+        <th>Image Version</th>
+        <th>Last Synced</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    async function loadDevices() {
+      const url = "https://YOUR_S3_BUCKET.s3.amazonaws.com/memory/deployment_reflections.jsonl";
+      const res = await fetch(url);
+      const text = await res.text();
+      const lines = text.trim().split('\n');
+      const tbody = document.querySelector("#deviceTable tbody");
+
+      lines.forEach(line => {
+        try {
+          const data = JSON.parse(line);
+          if (data.device) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+              <td>${data.device}</td>
+              <td>${data.status || 'n/a'}</td>
+              <td>${data.model || 'n/a'}</td>
+              <td>${data.location || 'n/a'}</td>
+              <td>${data.image_version || 'n/a'}</td>
+              <td>${data.last_synced || 'n/a'}</td>
+            `;
+            tbody.appendChild(row);
+          }
+        } catch (err) {
+          console.error("Invalid JSONL line:", line);
+        }
+      });
+    }
+
+    loadDevices();
+  </script>
+</body>
+</html>
