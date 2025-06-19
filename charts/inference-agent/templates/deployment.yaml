@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inference-agent
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inference-agent
+  template:
+    metadata:
+      labels:
+        app: inference-agent
+    spec:
+      containers:
+        - name: inference
+          image: '{{ .Values.image.repository }}:{{ .Values.image.tag }}'
+          imagePullPolicy: '{{ .Values.image.pullPolicy }}'
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: '{{ .Values.resources.limits.cpu }}'
+              memory: '{{ .Values.resources.limits.memory }}'

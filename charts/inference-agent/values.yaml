@@ -1,0 +1,12 @@
+image:
+  repository: iangreen74/inference-agent
+  tag: v10-squeezenet
+  pullPolicy: Always
+
+service:
+  port: 80
+
+resources:
+  limits:
+    cpu: 300m
+    memory: 256Mi

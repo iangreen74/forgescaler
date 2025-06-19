@@ -1,0 +1,11 @@
+{
+  "hostname": "vaultpi",
+  "ip": "vaultpi.local",
+  "os": "Debian 12 (64-bit)",
+  "k3s_installed": true,
+  "k8s_status": "unknown",
+  "inference_pods": [],
+  "images": [],
+  "last_synced": null
+}
+
