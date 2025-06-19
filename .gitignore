@@ -1,1 +1,8 @@
 .DS_Store
+# In .gitignore
+vaultscaler_git_status.txt
+vaultscaler_repo_structure.txt
+repo-structure.txt
+test.jpg
+*.tar.gz
+*.onnx
