@@ -1,0 +1,9 @@
+{
+  "device": "vault-jetson",
+  "location": "Las Vegas lab",
+  "model": "Jetson Orin NX 16GB",
+  "status": "initializing",
+  "camera_count": 0,
+  "image_version": "vaultscaler-jetson-v1.0",
+  "last_synced": "2025-06-19T00:00:00Z"
+}
